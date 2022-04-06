@@ -10,9 +10,8 @@ export default createGlobalStyle`
 
 
   body{
-    background: #312E38;
-    color: #fff;
     -webkit-font-smoothing: antialiased;
+    margin: 0px;
   }
 
   border-style, input, button {

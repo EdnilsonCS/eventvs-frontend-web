@@ -1,5 +1,11 @@
+import { Container } from './styled';
+
 function SignIn(): JSX.Element {
-  return <div>Login aqui</div>;
+  return (
+    <Container>
+      <span> Login aqui</span>
+    </Container>
+  );
 }
 
 export default SignIn;
