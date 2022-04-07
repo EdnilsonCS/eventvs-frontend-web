@@ -1,4 +1,5 @@
 import { Routes, BrowserRouter, Route } from 'react-router-dom';
+import SignUp from '../screens/SignUp';
 import SignIn from '../screens/SignIn';
 
 function Navigate(): JSX.Element {
@@ -6,6 +7,7 @@ function Navigate(): JSX.Element {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<SignIn />} />
+        <Route path="/sign-up" element={<SignUp />} />
       </Routes>
     </BrowserRouter>
   );
