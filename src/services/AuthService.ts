@@ -1,4 +1,5 @@
 import qs from 'qs';
+import { Buffer } from 'buffer';
 import api from './api';
 
 interface ILoginDTO {

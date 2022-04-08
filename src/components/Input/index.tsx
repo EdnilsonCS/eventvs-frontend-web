@@ -26,8 +26,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       setIsFocused(true);
     }, []);
     const handleInputBlur = useCallback(() => {
-      setIsFocused(!isFocused);
-    }, [isFocused]);
+      setIsFocused(false);
+    }, []);
 
     const handleKeyUp = useCallback(
       (e: React.FormEvent<HTMLInputElement>) => {
@@ -43,7 +43,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       },
       [mask],
     );
-
+    console.log(isFocused, name);
     return (
       <Container>
         <ContainerInput
@@ -56,7 +56,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           <input
             ref={ref}
             onFocus={handleInputFocus}
-            onBlur={handleInputBlur}
+            onBlurCapture={handleInputBlur}
             onKeyUp={mask ? handleKeyUp : undefined}
             {...rest}
           />

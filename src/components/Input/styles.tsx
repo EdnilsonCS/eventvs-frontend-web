@@ -27,7 +27,7 @@ export const ContainerInput = styled.div<ContainerProps>`
   ${props =>
     props.isErrored &&
     css`
-      border-color: #c53030;
+      border: 2px solid #c53030;
     `}
 
   ${props =>
