@@ -85,8 +85,6 @@ function SignUp(): JSX.Element {
   );
 
   const handleSignUp = async (data: SignUpCredentials): Promise<void> => {
-    console.log(data);
-
     await signUp(data);
     navigate('/sing-up');
   };

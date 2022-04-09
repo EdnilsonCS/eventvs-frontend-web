@@ -30,7 +30,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     }, []);
 
     const handleKeyUp = useCallback(
-      (e: React.FormEvent<HTMLInputElement>) => {
+      (e: React.ChangeEvent<HTMLInputElement>) => {
         if (mask === 'cep') {
           cep(e);
         }
@@ -40,10 +40,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         if (mask === 'cpf') {
           cpf(e);
         }
+        return e;
       },
       [mask],
     );
-    console.log(isFocused, name);
+
     return (
       <Container>
         <ContainerInput
@@ -55,10 +56,17 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           {Icon && <Icon size={20} />}
           <input
             ref={ref}
+            {...rest}
             onFocus={handleInputFocus}
             onBlurCapture={handleInputBlur}
-            onKeyUp={mask ? handleKeyUp : undefined}
-            {...rest}
+            onChange={e => {
+              let event = e;
+              if (mask) {
+                event = handleKeyUp(e);
+              }
+
+              if (rest.onChange) rest.onChange(event);
+            }}
           />
         </ContainerInput>
         {errors[name] ? <Error>{errors[name].message}</Error> : null}

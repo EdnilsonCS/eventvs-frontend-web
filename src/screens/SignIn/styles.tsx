@@ -12,7 +12,7 @@ export const Container = styled.div`
   );
 `;
 
-export const Box = styled.div`
+export const Box = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
