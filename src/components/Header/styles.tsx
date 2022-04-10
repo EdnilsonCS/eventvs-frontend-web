@@ -70,20 +70,19 @@ export const NavbarEnd = styled.div<NavbarEndProps>`
     ${({ isOpen }) =>
       isOpen &&
       css`
+        background-color: white;
         box-shadow: 0 8px 16px rgb(10 10 10 / 10%);
-
         display: flex;
         position: absolute;
         flex-direction: column;
         margin-top: 65px;
-        right: 10px;
+        right: 24px;
         padding-top: 31px;
         padding-bottom: 32px;
         padding-right: 10px;
         padding-left: 10px;
         align-items: center;
         justify-content: space-between;
-
         .navbar-item {
           margin-bottom: 10px;
           margin-left: 0px;
