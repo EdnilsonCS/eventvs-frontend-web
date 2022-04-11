@@ -64,6 +64,11 @@ export const NavbarEnd = styled.div<NavbarEndProps>`
     line-height: 24px;
 
     color: #ffffff;
+    text-decoration: none;
+  }
+
+  .now {
+    text-decoration: underline;
   }
 
   @media (max-width: 768px) {
@@ -83,6 +88,7 @@ export const NavbarEnd = styled.div<NavbarEndProps>`
         padding-left: 10px;
         align-items: center;
         justify-content: space-between;
+
         .navbar-item {
           margin-bottom: 10px;
           margin-left: 0px;

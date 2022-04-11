@@ -5,7 +5,15 @@ import { Link } from 'react-router-dom';
 import Container from '../Container';
 import { Wrapper, Logo, Content, NavbarEnd } from './styles';
 
-const Header: VFC = () => {
+interface Header {
+  options: {
+    name: string;
+    router: string;
+    isOpen?: boolean;
+  }[];
+}
+
+const Header: React.FC<Header> = ({ options }) => {
   const [isOpen, setOpen] = useState(false);
   const toggleMenu = (): void => {
     setOpen(!isOpen);
@@ -24,12 +32,16 @@ const Header: VFC = () => {
           </button>
 
           <NavbarEnd className="navbar-end" isOpen={isOpen}>
-            <Link className="navbar-item" to="/class">
-              Adicionar evento
-            </Link>
-            <Link className="navbar-item" to="/subjects">
-              Adicionar categoria
-            </Link>
+            {options.map(item => {
+              return (
+                <Link
+                  className={`navbar-item ${item.isOpen ? 'now' : ''}`}
+                  to={item.router}
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
           </NavbarEnd>
         </Content>
       </Container>
