@@ -1,5 +1,7 @@
 import { VFC } from 'react';
 import Card from 'src/components/Card';
+import SearchInput from 'src/components/SearchInput';
+import Filter, { DataFilter } from '../../../components/Filter';
 import Header from '../../../components/Header';
 import Container from '../../../components/Container';
 import { Wrapper } from './styles';
@@ -22,11 +24,25 @@ const Home: VFC = () => {
     // }
     // getEventsList();
   };
+  const onHandleFilter = async (
+    data: DataFilter | undefined,
+  ): Promise<void> => {
+    console.log();
+  };
+
+  const getEventsList = async (): Promise<void> => {
+    console.log();
+  };
   return (
     <>
       <Header />
       <Container>
         <Wrapper>
+          <SearchInput />
+          <Filter
+            onHandleFilter={onHandleFilter}
+            onClean={() => getEventsList()}
+          />
           {[1, 2, 3, 4, 5, 4, 2, 2, 2, 2, 2, 2].map(() => {
             return (
               <Card

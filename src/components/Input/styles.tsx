@@ -18,6 +18,7 @@ export const ContainerInput = styled.div<ContainerProps>`
   background: white;
   border-radius: 20px;
   display: flex;
+  height: 54px;
   align-items: center;
   border: 1px solid #232129;
   color: black;
@@ -27,14 +28,14 @@ export const ContainerInput = styled.div<ContainerProps>`
   ${props =>
     props.isErrored &&
     css`
-      border: 2px solid #c53030;
+      border: 1px solid #c53030;
     `}
 
   ${props =>
     props.isFocused &&
     css`
       color: #6d43a1;
-      border: 2px solid #6d43a1;
+      border: 1px solid #6d43a1;
     `}
 
   input {
