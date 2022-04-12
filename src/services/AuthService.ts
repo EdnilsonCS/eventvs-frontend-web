@@ -14,9 +14,7 @@ interface ISignupDTO {
   email: string;
 }
 
-const authHeader = `Basic ${Buffer.from('app-mobile:mobile', 'utf-8').toString(
-  'base64',
-)}`;
+const authHeader = 'Basic YXBwLW1vYmlsZTptb2JpbGU=';
 class AuthService {
   static signIn(data: ILoginDTO): Promise<any> {
     return api({

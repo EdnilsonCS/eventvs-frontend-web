@@ -27,7 +27,9 @@ api.interceptors.response.use(
 
       await localStorage.setItem('@Events:token', token);
 
-      api.defaults.headers.common.Authorization = `Bearer ${token}`;
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      Api.defaults.headers.authorization = `Bearer ${token}`;
       return api(originalRequest);
     }
     return Promise.reject(error);

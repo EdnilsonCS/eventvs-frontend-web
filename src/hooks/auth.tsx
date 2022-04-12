@@ -44,7 +44,9 @@ const AuthProvider: React.FC = ({ children }) => {
       const token = await localStorage.getItem('@Events:token');
 
       if (token && user) {
-        Api.defaults.headers.common.authorization = `Bearer ${token}`;
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        Api.defaults.headers.authorization = `Bearer ${token}`;
         setData({ token, user: JSON.parse(user) });
       }
       setLoading(false);
@@ -69,7 +71,9 @@ const AuthProvider: React.FC = ({ children }) => {
       await localStorage.setItem('@Events:token', token);
 
       await localStorage.setItem('@Events:user', JSON.stringify(user));
-      Api.defaults.headers.common.authorization = `Bearer ${token}`;
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      Api.defaults.headers.authorization = `Bearer ${token}`;
       setData({
         token,
         user,

@@ -4,8 +4,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Controller, useForm } from 'react-hook-form';
 import Input from '../../components/Input';
 import { Container, Box, Title, Subtitle, Button } from './styles';
+import { SignInCredentials, useAuth } from '../../hooks/auth';
 
 function SignIn(): JSX.Element {
+  const { signIn } = useAuth();
   const schema = Yup.object().shape({
     email: Yup.string()
       .email('Esse email não é válido')
@@ -27,9 +29,13 @@ function SignIn(): JSX.Element {
     },
   });
 
+  const handleLogin = async (data: SignInCredentials): Promise<void> => {
+    await signIn(data);
+  };
+
   return (
     <Container>
-      <Box>
+      <Box onSubmit={handleSubmit(handleLogin)}>
         <Title>EventVS</Title>
 
         <Subtitle>Login</Subtitle>
