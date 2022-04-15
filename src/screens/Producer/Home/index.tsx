@@ -39,11 +39,15 @@ const Home: VFC = () => {
         options={[
           {
             name: 'Eventos',
-            router: '/participant/home',
+            router: '/producer/home',
           },
           {
-            name: 'Minhas inscrições',
-            router: '/participant/subscribes',
+            name: 'Adicionar Evento',
+            router: '/producer/subscribes',
+          },
+          {
+            name: 'Adicionar Categoria',
+            router: '/producer/subscribes',
           },
         ]}
       />
@@ -66,8 +70,6 @@ const Home: VFC = () => {
                 estado="Sergipe"
                 dataHoraInicio={new Date()}
                 dataHoraFim={new Date()}
-                onPressButton={() => handleSubscribe('1')}
-                type="ok"
                 description="Descrição"
               />
             );
