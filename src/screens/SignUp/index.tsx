@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Controller, useForm } from 'react-hook-form';
 import AuthService from '../../services/AuthService';
-import { onlyNumbers } from '../../services/utils';
+import { onlyNumbers } from '../../utils/utils';
 import Input from '../../components/Input';
 import CheckBox from '../../components/Checkbox';
 import { Container, Box, Title, Subtitle, Button } from './styles';

@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import { IconBaseProps } from 'react-icons';
 import { FieldErrors } from 'react-hook-form';
-import { cep, cpf, currency } from '../../services/mask';
+import { cep, cpf, currency } from '../../utils/mask';
 import { ContainerInput, Error, Container } from './styles';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {

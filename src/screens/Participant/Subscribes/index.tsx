@@ -18,9 +18,9 @@ const Subscribe: VFC = () => {
 
     const filterDate = dados.filter(inscricao => {
       const nameEvento = inscricao.evento.nome.toLowerCase();
-      const stringToComparation = String(filterString).toLowerCase();
+      const stringToComparative = String(filterString).toLowerCase();
 
-      return nameEvento.includes(stringToComparation);
+      return nameEvento.includes(stringToComparative);
     });
     setSubscribes(filterDate);
   };
