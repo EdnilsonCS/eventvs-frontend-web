@@ -2,6 +2,8 @@ import { useEffect, useState, VFC } from 'react';
 import Card from 'src/components/Card';
 import SearchInput from 'src/components/SearchInput';
 import { useLocation } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
 import SubscribeService, {
   ISubscribe,
 } from '../../../services/SubscribeService';
@@ -29,20 +31,21 @@ const Subscribe: VFC = () => {
   }, [location]);
 
   const handleCancelButton = async (id: number): Promise<void> => {
-    // Alert.alert(
-    //   'Cancelar inscrição',
-    //   'Você realmente deseja cancelar sua inscrição',
-    //   [
-    //     {
-    //       text: 'sim',
-    //       onPress: async () => {
-    //         await SubscribeService.cancelSubscription(id);
-    //         getSubscription('');
-    //       },
-    //     },
-    //     { text: 'não', onPress: () => console.log('OK Pressed') },
-    //   ],
-    // );
+    Swal.fire({
+      title: 'Tem certeza?',
+      text: "'Você realmente deseja cancelar sua inscrição?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sim, remova!',
+    }).then(async result => {
+      if (result.isConfirmed) {
+        await SubscribeService.cancelSubscription(id);
+        getSubscription('');
+        toast.success('Inscrição removida com sucesso');
+      }
+    });
   };
   useEffect(() => {
     getSubscription('');
