@@ -16,10 +16,14 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   icon?: React.ComponentType<IconBaseProps>;
   errors: FieldErrors;
   mask?: 'cep' | 'currency' | 'cpf';
+  label?: string;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ errors, name, icon: Icon, mask, containerStyle = {}, ...rest }, ref) => {
+  (
+    { errors, name, icon: Icon, mask, containerStyle = {}, label, ...rest },
+    ref,
+  ) => {
     const [isFocused, setIsFocused] = useState(false);
 
     const handleInputFocus = useCallback(() => {
@@ -47,6 +51,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <Container>
+        <span>{label}</span>
         <ContainerInput
           style={containerStyle}
           isErrored={!!errors[name]}

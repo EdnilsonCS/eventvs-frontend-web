@@ -12,6 +12,8 @@ interface SelectProps {
   errors: FieldErrors;
   onChange(e: string | undefined): void;
   value: string | undefined;
+  placeholder?: string;
+  label?: string;
 }
 
 const CustomSelect: VFC<SelectProps> = ({
@@ -19,16 +21,20 @@ const CustomSelect: VFC<SelectProps> = ({
   errors,
   name,
   onChange,
+  placeholder,
   value,
+  label,
   ...rest
 }) => {
   return (
     <Container>
+      <span>{label}</span>
       <Select
         {...rest}
         value={options.find(item => {
           return item.value === value;
         })}
+        placeholder={placeholder}
         options={options}
         onChange={item => {
           onChange(item?.value);

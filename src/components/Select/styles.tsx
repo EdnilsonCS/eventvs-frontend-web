@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  & + div {
-    margin-top: 20px;
+  width: 100%;
+
+  span {
+    margin-left: 6px;
   }
 `;
 

@@ -21,6 +21,10 @@ export const Box = styled.form`
   padding: 20px 25px;
   background: #ffffff;
   border-radius: 10px;
+
+  & + div {
+    margin-top: 20px;
+  }
 `;
 
 export const Title = styled.h1`

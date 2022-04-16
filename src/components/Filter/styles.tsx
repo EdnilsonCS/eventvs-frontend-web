@@ -6,9 +6,6 @@ export const ButtonFilter = styled.button`
   display: flex;
   align-items: center;
   color: #6d43a1;
-  span {
-    margin-left: 6px;
-  }
 `;
 
 export const Button = styled.button`

@@ -41,14 +41,15 @@ const Home: VFC = () => {
           {
             name: 'Eventos',
             router: '/producer/home',
+            isOpen: true,
           },
           {
             name: 'Adicionar Evento',
-            router: '/producer/subscribes',
+            router: '/producer/add-event',
           },
           {
             name: 'Adicionar Categoria',
-            router: '/producer/subscribes',
+            router: '/producer/add-category',
           },
         ]}
       />

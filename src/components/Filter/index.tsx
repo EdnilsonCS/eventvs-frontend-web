@@ -133,13 +133,13 @@ const Filter: React.ForwardRefRenderFunction<IFilterRef, IFilterModal> = (
       </ButtonFilter>
       {isOpen && (
         <ModalFilter onSubmit={handleSubmit(onSubmit)}>
-          <span>Data Inicial:</span>
           <Controller
             name="dataInicial"
             control={control}
             render={({ field }) => (
               <Input
                 {...field}
+                label="Data Inicial:"
                 type="date"
                 placeholder="Data Inicial"
                 errors={errors}
@@ -147,7 +147,6 @@ const Filter: React.ForwardRefRenderFunction<IFilterRef, IFilterModal> = (
             )}
           />
 
-          <span>Data Final:</span>
           <Controller
             name="dataFinal"
             control={control}
@@ -155,28 +154,33 @@ const Filter: React.ForwardRefRenderFunction<IFilterRef, IFilterModal> = (
               <Input
                 {...field}
                 type="date"
+                label="Data Final:"
                 placeholder="Data Inicial"
                 errors={errors}
               />
             )}
           />
 
-          <span>Status:</span>
           <Controller
             name="statusEvento"
             control={control}
             render={({ field }) => (
-              <Select {...field} options={statusEvent} errors={errors} />
+              <Select
+                {...field}
+                label="Status:"
+                options={statusEvent}
+                errors={errors}
+              />
             )}
           />
 
-          <span>Categoria:</span>
           <Controller
             name="categoriaId"
             control={control}
             render={({ field }) => (
               <Select
                 {...field}
+                label="Categoria:"
                 options={formattedCategories}
                 errors={errors}
               />
