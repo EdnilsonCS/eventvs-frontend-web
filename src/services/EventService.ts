@@ -24,14 +24,9 @@ export interface IEvent {
 }
 
 export interface IEventCreateDTO {
-  descrição: string;
-  categoria: {
-    id: number;
-    nome: string;
-    descricao: string;
-  };
-  dataHoraFim: Date;
-  dataHoraInicio: Date;
+  categoriaId: string;
+  dataHoraFim: string;
+  dataHoraInicio: string;
   descricao: string;
   endereco: {
     logradouro: string;
@@ -139,21 +134,21 @@ class EventService {
     return data;
   }
 
-  static async getEventDetail(id: number): Promise<IEvent> {
+  static async getEventDetail(id: string): Promise<IEvent> {
     const { data } = await api.get<IEvent>(`/eventos/${id}`);
 
     return data;
   }
 
-  static async publicEvent(id: number): Promise<void> {
+  static async publicEvent(id: string): Promise<void> {
     await api.patch<IEvent>(`/eventos/${id}/publicar`);
   }
 
-  static async deleteEvent(id: number): Promise<void> {
+  static async deleteEvent(id: string): Promise<void> {
     await api.delete<IEvent>(`/eventos/${id}`);
   }
 
-  static async cancelEvent(id: number): Promise<void> {
+  static async cancelEvent(id: string): Promise<void> {
     await api.patch<IEvent>(`/eventos/${id}/cancelar`);
   }
 }

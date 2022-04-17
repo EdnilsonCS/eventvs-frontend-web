@@ -12,6 +12,7 @@ export const Container = styled.div`
 
   span {
     margin-left: 6px;
+    margin-bottom: 5px;
   }
 `;
 

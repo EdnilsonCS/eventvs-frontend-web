@@ -3,26 +3,16 @@ import Card from 'src/components/Card';
 import SearchInput from 'src/components/SearchInput';
 import Swal from 'sweetalert2';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 import Filter, { DataFilter } from '../../../components/Filter';
 import Header from '../../../components/Header';
 import Container from '../../../components/Container';
 import { Wrapper } from './styles';
 
 const Home: VFC = () => {
-  const handleSubscribe = async (id: string): Promise<void> => {
-    Swal.fire({
-      title: 'Tem certeza?',
-      text: "'Você realmente deseja cancelar sua inscrição?",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, remova!',
-    }).then(async result => {
-      if (result.isConfirmed) {
-        toast.success('Inscrição removida com sucesso');
-      }
-    });
+  const navigate = useNavigate();
+  const handleNavigationToDetail = async (id: string): Promise<void> => {
+    navigate(`/producer/event/${id}`);
   };
   const onHandleFilter = async (
     data: DataFilter | undefined,
@@ -72,7 +62,7 @@ const Home: VFC = () => {
                 estado="Sergipe"
                 dataHoraInicio={new Date()}
                 dataHoraFim={new Date()}
-                onPressButton={() => handleSubscribe('1')}
+                onPress={() => handleNavigationToDetail('1')}
                 description="Descrição"
               />
             );

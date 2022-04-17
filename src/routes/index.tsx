@@ -10,6 +10,8 @@ import ProtectedRoute from './PrivateRouter';
 import HomeProducer from '../screens/Producer/Home';
 import AddCategoryProducer from '../screens/Producer/AddCategory';
 import AddEventProducer from '../screens/Producer/AddEvent';
+import DetailEventProducer from '../screens/Producer/Details';
+import EditEventProducer from '../screens/Producer/EditEvent';
 
 function Navigate(): JSX.Element {
   const { token } = useAuth();
@@ -27,6 +29,18 @@ function Navigate(): JSX.Element {
           path="/producer/add-event"
           index={false}
           element={<AddEventProducer />}
+        />
+
+        <Route
+          path="/producer/event/:id"
+          index={false}
+          element={<DetailEventProducer />}
+        />
+
+        <Route
+          path="/producer/event/edit/:id"
+          index={false}
+          element={<EditEventProducer />}
         />
         {!token ? (
           <>

@@ -44,6 +44,7 @@ const CustomSelect: VFC<SelectProps> = ({
             ...provided,
             color: '#6d43a1',
             height: '54px',
+            marginTop: '5px',
             borderRadius: '20px',
             border: '1px solid #232129',
             '&:hover': { borderColor: '#6d43a1' },

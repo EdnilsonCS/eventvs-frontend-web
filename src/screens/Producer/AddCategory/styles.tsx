@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const Wrapper = styled.form`
   display: flex;
   flex-direction: column;
-  padding: 20px 25px;
   background: #ffffff;
   border-radius: 10px;
 `;
@@ -51,4 +50,5 @@ export const Title = styled.h1`
   font-size: 32px;
   line-height: 39px;
   margin-bottom: 39px;
+  margin-top: 25px;
 `;

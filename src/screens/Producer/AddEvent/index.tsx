@@ -6,10 +6,12 @@ import { toast } from 'react-toastify';
 import Select from 'src/components/Select';
 import CategoryService, { ICategory } from 'src/services/CategoryService';
 import LocationService, { ICity, IState } from 'src/services/LocationService';
+import dayjs from 'src/helpers/datas';
 import { Wrapper, Button, Row, ButtonCancel, Title } from './styles';
 import Input from '../../../components/Input';
 import Header from '../../../components/Header';
 import Container from '../../../components/Container';
+import EventService from '../../../services/EventService';
 
 const AddEvent: VFC = () => {
   const [categories, setCategories] = useState<ICategory[]>([]);
@@ -22,8 +24,8 @@ const AddEvent: VFC = () => {
     categoriaId: Yup.string().required('Categoria é um campo obrigatório'),
     dataHoraFim: Yup.date().required('Data de inicio é um campo obrigatório'),
     dataHoraInicio: Yup.date().required('Data de fim é um campo obrigatório'),
-    horaDeFim: Yup.date().required('Hora de inicio é um campo obrigatório'),
-    horaDeInicio: Yup.date().required('Hora de fim é um campo obrigatório'),
+    horaDeFim: Yup.string().required('Hora de inicio é um campo obrigatório'),
+    horaDeInicio: Yup.string().required('Hora de fim é um campo obrigatório'),
     logradouro: Yup.string().required('Logradouro é um campo obrigatório'),
     numero: Yup.number().required('Número é um campo obrigatório'),
     bairro: Yup.string().required('Bairro é um campo obrigatório'),
@@ -61,10 +63,6 @@ const AddEvent: VFC = () => {
   const selectedState = watch('estado');
   const cepValue = watch('cep');
 
-  const handleCreateNewEvent = (): void => {
-    console.log();
-  };
-
   useEffect(() => {
     const getCityList = async (): Promise<void> => {
       const serviceCity = await LocationService.getCityList({
@@ -76,6 +74,29 @@ const AddEvent: VFC = () => {
 
     getCityList();
   }, [getValues, selectedState]);
+  useEffect(() => {
+    const getInformationBycep = async (): Promise<void> => {
+      if (cepValue && cepValue.length > 7) {
+        const cepInformation = await LocationService.getInformationByCep({
+          cepNumber: cepValue.replace('-', ''),
+        });
+
+        if (cepInformation.state)
+          setValue('estado', cepInformation.state, {
+            shouldValidate: true,
+          });
+        if (cepInformation.street)
+          setValue('logradouro', cepInformation.street);
+
+        if (cepInformation.city) setValue('cidade', cepInformation.city);
+
+        if (cepInformation.neighborhood)
+          setValue('bairro', cepInformation.neighborhood);
+      }
+    };
+
+    getInformationBycep();
+  }, [cepValue, setValue]);
   useEffect(() => {
     const getCategoryList = async (): Promise<void> => {
       const serviceCategories = await CategoryService.getCategoryList();
@@ -144,7 +165,44 @@ const AddEvent: VFC = () => {
       };
     });
   }, [citys]);
+  const handleCreateNewEvent = async (data: any): Promise<void> => {
+    const endereco = {
+      logradouro: data.logradouro,
+      numero: data.numero,
+      bairro: data.bairro,
+      cidade: data.cidade,
+      estado: data.estado,
+      cep: data.cep,
+    };
 
+    const event = {
+      endereco,
+      nome: data.nome,
+      descricao: data.descricao,
+      statusEvento: data.statusEvento,
+      categoriaId: data.categoriaId,
+      dataHoraFim: dayjs(data.dataHoraFim).format('YYYY-MM-DDTHH:mm:ss'),
+      dataHoraInicio: dayjs(data.dataHoraInicio).format('YYYY-MM-DDTHH:mm:ss'),
+    };
+
+    try {
+      await EventService.createNewEvent(event);
+      setValue('logradouro', '');
+      setValue('numero', '');
+      setValue('bairro', '');
+      setValue('cidade', '');
+      setValue('estado', '');
+      setValue('cep', '');
+
+      setValue('nome', '');
+      setValue('descricao', '');
+      setValue('dataHoraFim', '');
+      setValue('dataHoraInicio', '');
+      toast.success('Cadastro realizado com sucesso');
+    } catch (err) {
+      toast.error('Erro ao fazer login, check suas credenciais');
+    }
+  };
   return (
     <>
       <Header
