@@ -28,7 +28,7 @@ const ModalParticipants: React.FC<ModalParticipantsProps> = ({
               <AiOutlineClose size={40} />
             </button>
           </TitleWrapper>
-          {[1, 2, 3, 4, 4, 4, 4, 4, 4, 4, 44, 4, 4, 4].map(item => (
+          {participantes.map(item => (
             <NameParticipante key={Math.random().toString()}>
               Ednilson Cardoso dos santos
             </NameParticipante>

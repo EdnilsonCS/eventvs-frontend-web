@@ -116,17 +116,8 @@ const Details: VFC = () => {
         <ModalParticipants open={modalOpen} participantes={participantes} />
         <Wrapper>
           <Title>Detalhes do evento</Title>
-          <Subtitle>Calourada na UFS</Subtitle>
-          <Description>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-            viverra nunc ut lorem consectetur, sit amet hendrerit neque mattis.
-            Vestibulum viverra tortor vehicula, finibus nunc sed, pulvinar leo.
-            Proin fringilla felis in odio molestie, id scelerisque lectus
-            suscipit. Suspendisse et enim eu orci condimentum ellentesque at
-            quis nisi. Vivamus quis aliquam ipsum. Suspendisse vitae orci nibh.
-            Morbi tincidunt, nibh bibendum semper condimentum, neque ligula
-            condimentum metus, sit amet faucibus augue turpis vitae neque.
-          </Description>
+          <Subtitle>{dados?.nome}</Subtitle>
+          <Description>{dados?.descricao}</Description>
           <Address>{formattedAddress}</Address>
           <Address>
             <strong>{formattedDateInicio}</strong> até{' '}
