@@ -6,9 +6,9 @@ import ParticipantsService, {
   IParticipantes,
 } from 'src/services/ParticipantsService';
 import ModalParticipants from 'src/components/ModalParticipantes';
-import EventService, { IEvent } from '../../../services/EventService';
-import Header from '../../../components/Header';
-import Container from '../../../components/Container';
+import EventService, { IEvent } from '../../../../services/EventService';
+import Header from '../../../../components/Header';
+import Container from '../../../../components/Container';
 import {
   Wrapper,
   Title,
@@ -31,7 +31,7 @@ const Details: VFC = () => {
     navigate(-1);
   };
   const handleEdit = async (id: string): Promise<void> => {
-    navigate(`producer/event/edit/${id}`);
+    navigate(`/producer/event/edit/${id}`);
   };
   const handlePublicar = async (id: string): Promise<void> => {
     try {

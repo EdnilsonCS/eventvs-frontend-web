@@ -7,8 +7,8 @@ export interface IEvent {
     nome: string;
     descricao: string;
   };
-  dataHoraFim: Date;
-  dataHoraInicio: Date;
+  dataHoraFim: string;
+  dataHoraInicio: string;
   descricao: string;
   endereco: {
     id: string;

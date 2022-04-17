@@ -9,9 +9,9 @@ import SubscribesParticipant from '../screens/Participant/Subscribes';
 import ProtectedRoute from './PrivateRouter';
 import HomeProducer from '../screens/Producer/Home';
 import AddCategoryProducer from '../screens/Producer/AddCategory';
-import AddEventProducer from '../screens/Producer/AddEvent';
-import DetailEventProducer from '../screens/Producer/Details';
-import EditEventProducer from '../screens/Producer/EditEvent';
+import AddEventProducer from '../screens/Producer/Event/Create';
+import DetailEventProducer from '../screens/Producer/Event/Detail';
+import EditEventProducer from '../screens/Producer/Event/Edit';
 
 function Navigate(): JSX.Element {
   const { token } = useAuth();

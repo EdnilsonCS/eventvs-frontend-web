@@ -8,10 +8,10 @@ import CategoryService, { ICategory } from 'src/services/CategoryService';
 import LocationService, { ICity, IState } from 'src/services/LocationService';
 import dayjs from 'src/helpers/datas';
 import { Wrapper, Button, Row, ButtonCancel, Title } from './styles';
-import Input from '../../../components/Input';
-import Header from '../../../components/Header';
-import Container from '../../../components/Container';
-import EventService from '../../../services/EventService';
+import Input from '../../../../components/Input';
+import Header from '../../../../components/Header';
+import Container from '../../../../components/Container';
+import EventService from '../../../../services/EventService';
 
 const AddEvent: VFC = () => {
   const [categories, setCategories] = useState<ICategory[]>([]);
