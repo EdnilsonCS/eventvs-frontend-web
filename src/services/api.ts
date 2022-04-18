@@ -3,7 +3,7 @@ import axios from 'axios';
 import AuthService from './AuthService';
 
 const api = axios.create({
-  baseURL: 'https://eventvs.herokuapp.com',
+  baseURL: 'https://events--api.herokuapp.com',
 });
 
 api.interceptors.response.use(

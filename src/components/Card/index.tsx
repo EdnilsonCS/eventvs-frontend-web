@@ -12,8 +12,8 @@ interface ICard {
   bairro: string;
   cidade: string;
   estado: string;
-  dataHoraInicio: Date;
-  dataHoraFim: Date;
+  dataHoraInicio: string;
+  dataHoraFim: string;
   type?: 'cancel' | 'ok';
   onPress?: () => void;
   onPressButton?: () => void;

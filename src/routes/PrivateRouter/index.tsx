@@ -17,21 +17,21 @@ const ProtectedRoute = ({
     return <Navigate to={redirectPath} replace />;
   }
 
-  if (user.role !== 'PARTICIPANT' && path === 'participant') {
-    if (user.role !== 'ADMIN') return <Navigate to="admin/home" replace />;
+  if (user.role !== 'PARTICIPANTE' && path === 'participant') {
+    if (user.role === 'ADMIN') return <Navigate to="/admin/home" replace />;
 
-    return <Navigate to="producer/home" replace />;
+    return <Navigate to="/producer/home" replace />;
   }
 
   if (user.role !== 'PRODUTOR' && path === 'producer') {
-    if (user.role !== 'PARTICIPANT')
-      return <Navigate to="participant/home" replace />;
+    if (user.role === 'PARTICIPANTE')
+      return <Navigate to="/participant/home" replace />;
 
     return <Navigate to="admin/home" replace />;
   }
 
   if (user.role !== 'ADMIN' && path === 'admin') {
-    if (user.role !== 'PARTICIPANT')
+    if (user.role === 'PARTICIPANTE')
       return <Navigate to="participant/home" replace />;
 
     return <Navigate to="producer/home" replace />;

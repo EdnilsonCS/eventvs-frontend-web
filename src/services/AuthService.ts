@@ -1,5 +1,4 @@
 import qs from 'qs';
-import { Buffer } from 'buffer';
 import api from './api';
 
 interface ILoginDTO {
@@ -16,20 +15,22 @@ interface ISignupDTO {
 
 const authHeader = 'Basic YXBwLW1vYmlsZTptb2JpbGU=';
 class AuthService {
-  static signIn(data: ILoginDTO): Promise<any> {
-    return api({
-      method: 'post',
-      url: '/oauth/token',
-      data: qs.stringify({
-        username: data.email,
+  static async signIn(data: ILoginDTO): Promise<any> {
+    const result = await api.post(
+      '/oauth/token',
+      qs.stringify({
+        username: data.email, // gave the values directly for testing
         password: data.password,
         grant_type: 'password',
       }),
-      headers: {
-        Authorization: authHeader,
-        'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
+      {
+        headers: {
+          authorization: 'Basic YXBwLW1vYmlsZTptb2JpbGU=',
+          'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+        },
       },
-    });
+    );
+    return result;
   }
 
   static signUp(data: ISignupDTO): Promise<any> {

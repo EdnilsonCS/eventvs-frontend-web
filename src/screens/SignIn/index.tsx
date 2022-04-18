@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Controller, useForm } from 'react-hook-form';
@@ -7,7 +7,8 @@ import { Container, Box, Title, Subtitle, Button } from './styles';
 import { SignInCredentials, useAuth } from '../../hooks/auth';
 
 function SignIn(): JSX.Element {
-  const { signIn } = useAuth();
+  const navigate = useNavigate();
+  const { signIn, user } = useAuth();
   const schema = Yup.object().shape({
     email: Yup.string()
       .email('Esse email não é válido')
@@ -31,6 +32,18 @@ function SignIn(): JSX.Element {
 
   const handleLogin = async (data: SignInCredentials): Promise<void> => {
     await signIn(data);
+    switch (user.role) {
+      case 'PRODUTOR':
+        navigate('producer/home');
+        break;
+
+      case 'ADMIN':
+        navigate('admin/home');
+        break;
+
+      default:
+        navigate('participant/home');
+    }
   };
 
   return (

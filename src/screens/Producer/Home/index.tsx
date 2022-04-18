@@ -60,8 +60,8 @@ const Home: VFC = () => {
                 bairro="Rosa elze"
                 cidade="São Cristovão"
                 estado="Sergipe"
-                dataHoraInicio={new Date()}
-                dataHoraFim={new Date()}
+                dataHoraInicio=""
+                dataHoraFim=""
                 onPress={() => handleNavigationToDetail('1')}
                 description="Descrição"
               />

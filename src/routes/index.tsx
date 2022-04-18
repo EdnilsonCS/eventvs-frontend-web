@@ -19,49 +19,76 @@ function Navigate(): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/producer/home" index={false} element={<HomeProducer />} />
-        <Route
-          path="/producer/add-category"
-          index={false}
-          element={<AddCategoryProducer />}
-        />
-        <Route
-          path="/producer/add-event"
-          index={false}
-          element={<AddEventProducer />}
-        />
-
-        <Route
-          path="/producer/event/:id"
-          index={false}
-          element={<DetailEventProducer />}
-        />
-
-        <Route
-          path="/producer/event/edit/:id"
-          index={false}
-          element={<EditEventProducer />}
-        />
         {!token ? (
           <>
             <Route path="/" element={<SignIn />} />
             <Route path="/sign-up" element={<SignUp />} />
           </>
         ) : (
-          <Route
-            path="participant"
-            element={
-              <ProtectedRoute path="participant">
-                <>
-                  <Route path="home" element={<HomeParticipant />} />
-                  <Route
-                    path="subscribes"
-                    element={<SubscribesParticipant />}
-                  />
-                </>
-              </ProtectedRoute>
-            }
-          />
+          <>
+            <Route path="participant">
+              <Route
+                path="home"
+                element={
+                  <ProtectedRoute path="participant">
+                    <HomeParticipant />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="subscribes"
+                element={
+                  <ProtectedRoute path="participant">
+                    <SubscribesParticipant />
+                  </ProtectedRoute>
+                }
+              />
+            </Route>
+            <Route path="producer">
+              <Route
+                path="home"
+                element={
+                  <ProtectedRoute path="producer">
+                    <HomeProducer />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="add-category"
+                element={
+                  <ProtectedRoute path="producer">
+                    <AddCategoryProducer />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="add-event"
+                element={
+                  <ProtectedRoute path="producer">
+                    <AddEventProducer />
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="event/:id"
+                element={
+                  <ProtectedRoute path="producer">
+                    <DetailEventProducer />
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="event/edit/:id"
+                element={
+                  <ProtectedRoute path="producer">
+                    <EditEventProducer />
+                  </ProtectedRoute>
+                }
+              />
+            </Route>
+          </>
         )}
       </Routes>
     </BrowserRouter>
