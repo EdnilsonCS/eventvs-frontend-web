@@ -7,7 +7,7 @@ import Select from 'src/components/Select';
 import CategoryService, { ICategory } from 'src/services/CategoryService';
 import LocationService, { ICity, IState } from 'src/services/LocationService';
 import dayjs from 'src/helpers/datas';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Wrapper, Button, Row, ButtonCancel, Title } from './styles';
 import Input from '../../../../components/Input';
 import Header from '../../../../components/Header';
@@ -15,8 +15,8 @@ import Container from '../../../../components/Container';
 import EventService from '../../../../services/EventService';
 
 const AddEvent: VFC = () => {
+  const navigate = useNavigate();
   const routeParams = useParams() as { id: string };
-
   const [categories, setCategories] = useState<ICategory[]>([]);
   const [states, setStates] = useState<IState[]>([]);
   const [citys, setCitys] = useState<ICity[]>([]);
@@ -25,10 +25,8 @@ const AddEvent: VFC = () => {
     descricao: Yup.string().required('Descrição é um campo obrigatório'),
     statusEvento: Yup.string().required('Status é um campo obrigatório'),
     categoriaId: Yup.string().required('Categoria é um campo obrigatório'),
-    dataHoraFim: Yup.date().required('Data de inicio é um campo obrigatório'),
-    dataHoraInicio: Yup.date().required('Data de fim é um campo obrigatório'),
-    horaDeFim: Yup.string().required('Hora de inicio é um campo obrigatório'),
-    horaDeInicio: Yup.string().required('Hora de fim é um campo obrigatório'),
+    dataHoraFim: Yup.string().required('Data de inicio é um campo obrigatório'),
+    dataHoraInicio: Yup.string().required('Data de fim é um campo obrigatório'),
     logradouro: Yup.string().required('Logradouro é um campo obrigatório'),
     numero: Yup.number().required('Número é um campo obrigatório'),
     bairro: Yup.string().required('Bairro é um campo obrigatório'),
@@ -206,6 +204,9 @@ const AddEvent: VFC = () => {
       toast.error('Erro ao tentar editar, tente novamente');
     }
   };
+  const handleGoBack = (): void => {
+    navigate(-1);
+  };
 
   useEffect(() => {
     const getEvent = async (): Promise<void> => {
@@ -248,7 +249,7 @@ const AddEvent: VFC = () => {
       <Container>
         <Wrapper onSubmit={handleSubmit(handleEditNewEvent)}>
           <Row>
-            <Title>Novo Evento</Title>
+            <Title>Editar Evento</Title>
           </Row>
           <Row>
             <Controller
@@ -424,8 +425,8 @@ const AddEvent: VFC = () => {
           </Row>
 
           <Row>
-            <Button>Editar</Button>
-            <ButtonCancel>Cancelar</ButtonCancel>
+            <Button type="submit">Cadastrar</Button>
+            <ButtonCancel onClick={handleGoBack}>Cancelar</ButtonCancel>
           </Row>
         </Wrapper>
       </Container>
