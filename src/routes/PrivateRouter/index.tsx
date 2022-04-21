@@ -13,12 +13,14 @@ const ProtectedRoute = ({
   path,
 }: ProtectedRouterProps): JSX.Element => {
   const { token, user } = useAuth();
-  if (!token) {
+
+  if (!token && path !== '/') {
     return <Navigate to={redirectPath} replace />;
   }
 
   if (user.role !== 'PARTICIPANTE' && path === 'participant') {
-    if (user.role === 'ADMIN') return <Navigate to="/admin/home" replace />;
+    if (user.role === 'ADMINISTRADOR')
+      return <Navigate to="/admin/home" replace />;
 
     return <Navigate to="/producer/home" replace />;
   }
@@ -30,7 +32,7 @@ const ProtectedRoute = ({
     return <Navigate to="admin/home" replace />;
   }
 
-  if (user.role !== 'ADMIN' && path === 'admin') {
+  if (user.role !== 'ADMINISTRADOR' && path === 'admin') {
     if (user.role === 'PARTICIPANTE')
       return <Navigate to="participant/home" replace />;
 
