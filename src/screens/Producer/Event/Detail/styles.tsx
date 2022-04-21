@@ -51,6 +51,7 @@ export const ButtonContainer = styled.div`
   margin: 20px 0px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -72,6 +73,12 @@ export const Button = styled.button`
   height: 50px;
   margin-bottom: 11px;
   width: 100%;
+
+  @media (min-width: 768px) {
+    & + button {
+      margin-left: 10px;
+    }
+  }
 `;
 
 export const ButtonCancel = styled(Button)`

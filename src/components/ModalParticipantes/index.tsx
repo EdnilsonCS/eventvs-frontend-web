@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-useless-fragment */
 import React from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 import { IParticipantes } from 'src/services/ParticipantsService';
@@ -12,30 +13,34 @@ import {
 interface ModalParticipantsProps {
   participantes: IParticipantes[];
   open: boolean;
+  onClose(): void;
 }
 
 const ModalParticipants: React.FC<ModalParticipantsProps> = ({
   open,
   participantes,
+  onClose,
 }) => {
   return (
-    <Card>
+    <>
       {open && (
-        <WrapperParticipante>
-          <TitleWrapper>
-            <Title>Participantes do evento</Title>
-            <button type="button">
-              <AiOutlineClose size={40} />
-            </button>
-          </TitleWrapper>
-          {participantes.map(item => (
-            <NameParticipante key={Math.random().toString()}>
-              Ednilson Cardoso dos santos
-            </NameParticipante>
-          ))}
-        </WrapperParticipante>
+        <Card>
+          <WrapperParticipante>
+            <TitleWrapper>
+              <Title>Participantes do evento</Title>
+              <button type="button" onClick={onClose}>
+                <AiOutlineClose size={40} />
+              </button>
+            </TitleWrapper>
+            {participantes.map(item => (
+              <NameParticipante key={Math.random().toString()}>
+                {item.participante.pessoa.nome}
+              </NameParticipante>
+            ))}
+          </WrapperParticipante>
+        </Card>
       )}
-    </Card>
+    </>
   );
 };
 

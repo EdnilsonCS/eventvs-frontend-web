@@ -58,14 +58,14 @@ const Home: VFC = () => {
 
     let dataFilter: IEvent[] = [];
 
-    dataFilter = await EventService.getEvents();
-
-    filterEvents = [...dataFilter];
-
     if (data.categoriaId) {
       dataFilter = await EventService.getEventsPublicadoByCategoria(
         data.categoriaId,
       );
+    } else {
+      dataFilter = await EventService.getEvents();
+
+      filterEvents = [...dataFilter];
     }
 
     filterEvents = [...dataFilter];
@@ -160,6 +160,7 @@ const Home: VFC = () => {
           />
           <Filter
             onHandleFilter={onHandleFilter}
+            isNotState
             onClean={() => getEventsList()}
           />
           {events.map(event => {

@@ -25,7 +25,7 @@ const Details: VFC = () => {
   const navigate = useNavigate();
   const [participantes, setParticipantes] = useState<IParticipantes[]>([]);
   const [dados, setDados] = useState<IEvent | null>(null);
-  const [modalOpen, setModalOpen] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
   const routeParams = useParams() as { id: string };
   const handleGoBack = (): void => {
     navigate(-1);
@@ -93,6 +93,10 @@ const Details: VFC = () => {
   const formattedDateFim = useMemo(() => {
     return dayjs(dados?.dataHoraFim).locale('pt-br').format('DD/MM/YYYY HH:mm');
   }, [dados]);
+
+  const onCloseModal = (): void => {
+    setModalOpen(!modalOpen);
+  };
   return (
     <>
       <Header
@@ -113,7 +117,11 @@ const Details: VFC = () => {
         ]}
       />
       <Container>
-        <ModalParticipants open={modalOpen} participantes={participantes} />
+        <ModalParticipants
+          open={modalOpen}
+          participantes={participantes}
+          onClose={onCloseModal}
+        />
         <Wrapper>
           <Title>Detalhes do evento</Title>
           <Subtitle>{dados?.nome}</Subtitle>

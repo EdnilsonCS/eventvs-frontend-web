@@ -3,7 +3,7 @@ import axios from 'axios';
 import AuthService from './AuthService';
 
 const api = axios.create({
-  baseURL: 'https://events--api.herokuapp.com',
+  baseURL: 'http://localhost:8080',
 });
 
 api.interceptors.response.use(

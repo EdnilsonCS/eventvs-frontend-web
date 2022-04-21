@@ -3,7 +3,14 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Controller, useForm } from 'react-hook-form';
 import { VFC } from 'react';
 import { toast } from 'react-toastify';
-import { Wrapper, Button, Row, ButtonCancel, Title } from './styles';
+import {
+  Wrapper,
+  Button,
+  Row,
+  ButtonCancel,
+  Title,
+  ButtonContainer,
+} from './styles';
 import Input from '../../../components/Input';
 import Header from '../../../components/Header';
 import Container from '../../../components/Container';
@@ -82,10 +89,10 @@ const AddCategory: VFC = () => {
               )}
             />
           </Row>
-          <Row>
+          <ButtonContainer>
             <Button>Cadastrar</Button>
             <ButtonCancel>Cancelar</ButtonCancel>
-          </Row>
+          </ButtonContainer>
         </Wrapper>
       </Container>
     </>
