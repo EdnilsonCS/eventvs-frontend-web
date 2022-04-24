@@ -15,7 +15,7 @@ export interface User {
   id: number;
   name: string;
   email: string;
-  role: string;
+  role: 'ADMINISTRADOR' | 'PARTICIPANTE' | 'PRODUTOR';
 }
 
 export interface SignInCredentials {

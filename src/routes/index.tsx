@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-wrap-multilines */
 import { Routes, BrowserRouter, Route } from 'react-router-dom';
 
+import ChangePerfil from 'src/screens/User/ChangePerfil';
 import SignUp from '../screens/SignUp';
 import SignIn from '../screens/SignIn';
 import HomeParticipant from '../screens/Participant/Home';
@@ -12,6 +13,7 @@ import AddEventProducer from '../screens/Producer/Event/Create';
 import DetailEventProducer from '../screens/Producer/Event/Detail';
 import EditEventProducer from '../screens/Producer/Event/Edit';
 import HomeAdmin from '../screens/Admin/Home';
+import ProfilePage from '../screens/User/Profile';
 
 function Navigate(): JSX.Element {
   return (
@@ -33,6 +35,10 @@ function Navigate(): JSX.Element {
             </ProtectedRoute>
           }
         />
+        <Route path="user">
+          <Route path="profile" element={<ProfilePage />} />
+          <Route path="change-perfil" element={<ChangePerfil />} />
+        </Route>
 
         <Route path="participant">
           <Route

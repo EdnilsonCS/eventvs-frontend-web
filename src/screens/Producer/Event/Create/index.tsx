@@ -206,7 +206,6 @@ const AddEvent: VFC = () => {
   const handleGoBack = (): void => {
     navigate(-1);
   };
-  console.log(errors);
   return (
     <>
       <Header
