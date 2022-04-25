@@ -36,8 +36,22 @@ function Navigate(): JSX.Element {
           }
         />
         <Route path="user">
-          <Route path="profile" element={<ProfilePage />} />
-          <Route path="change-perfil" element={<ChangePerfil />} />
+          <Route
+            path="profile"
+            element={
+              <ProtectedRoute>
+                <ProfilePage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="change-perfil"
+            element={
+              <ProtectedRoute>
+                <ChangePerfil />
+              </ProtectedRoute>
+            }
+          />
         </Route>
 
         <Route path="participant">
@@ -103,14 +117,16 @@ function Navigate(): JSX.Element {
           />
         </Route>
 
-        <Route
-          path="admin"
-          element={
-            <ProtectedRoute path="admin">
-              <Route path="home" element={<HomeAdmin />} />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="admin">
+          <Route
+            path="home"
+            element={
+              <ProtectedRoute path="admin">
+                <HomeAdmin />
+              </ProtectedRoute>
+            }
+          />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

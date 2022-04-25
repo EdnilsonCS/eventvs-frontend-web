@@ -66,6 +66,10 @@ const AddCategory: VFC = () => {
             router: '/producer/add-category',
             isOpen: true,
           },
+          {
+            name: 'Perfil',
+            router: '/user/profile',
+          },
         ]}
       />
       <Container>

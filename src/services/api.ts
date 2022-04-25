@@ -32,6 +32,7 @@ api.interceptors.response.use(
       Api.defaults.headers.authorization = `Bearer ${token}`;
       return api(originalRequest);
     }
+
     return Promise.reject(error);
   },
 );

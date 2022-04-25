@@ -244,6 +244,10 @@ const AddEvent: VFC = () => {
             name: 'Adicionar Categoria',
             router: '/producer/add-category',
           },
+          {
+            name: 'Perfil',
+            router: '/user/profile',
+          },
         ]}
       />
       <Container>

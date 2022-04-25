@@ -26,12 +26,15 @@ const Perfil: VFC = () => {
         return [
           {
             name: 'Eventos',
-            router: '/participant/home',
-            isOpen: true,
+            router: '/producer/home',
           },
           {
-            name: 'Minhas inscrições',
-            router: '/participant/subscribes',
+            name: 'Adicionar Evento',
+            router: '/producer/add-event',
+          },
+          {
+            name: 'Adicionar Categoria',
+            router: '/producer/add-category',
           },
           {
             name: 'Perfil',

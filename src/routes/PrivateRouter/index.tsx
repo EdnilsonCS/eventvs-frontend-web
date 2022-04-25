@@ -5,7 +5,7 @@ import { useAuth } from 'src/hooks/auth';
 interface ProtectedRouterProps {
   redirectPath?: string;
   children: JSX.Element;
-  path: string;
+  path?: string;
 }
 const ProtectedRoute = ({
   redirectPath = '/',
@@ -16,6 +16,18 @@ const ProtectedRoute = ({
 
   if (!token && path !== '/') {
     return <Navigate to={redirectPath} replace />;
+  }
+
+  console.log('path');
+  if (path === '/') {
+    if (user.role === 'ADMINISTRADOR')
+      return <Navigate to="/admin/home" replace />;
+
+    if (user.role === 'PARTICIPANTE')
+      return <Navigate to="/participant/home" replace />;
+
+    if (user.role === 'PARTICIPANTE')
+      return <Navigate to="/participant/home" replace />;
   }
 
   if (user.role !== 'PARTICIPANTE' && path === 'participant') {

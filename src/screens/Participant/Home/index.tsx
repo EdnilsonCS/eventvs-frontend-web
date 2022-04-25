@@ -147,7 +147,7 @@ const Home: VFC = () => {
           },
           {
             name: 'Perfil',
-            router: '/participant/subscribes/perfil',
+            router: '/user/profile',
           },
         ]}
       />
