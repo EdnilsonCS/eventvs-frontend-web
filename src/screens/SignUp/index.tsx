@@ -5,6 +5,7 @@ import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Controller, useForm } from 'react-hook-form';
+import * as CPFUtil from '../../utils/cpf';
 import AuthService from '../../services/AuthService';
 import { onlyNumbers } from '../../utils/utils';
 import Input from '../../components/Input';
@@ -22,7 +23,11 @@ function SignUp(): JSX.Element {
   const navigate = useNavigate();
   const schema = Yup.object().shape({
     nome: Yup.string().required('Nome obrigatório'),
-    cpf: Yup.string().required('Cpf é um campo obrigatório'),
+    cnpj: Yup.string()
+      .test('cpf', 'Digite um cpf válido', value => {
+        return CPFUtil.isValid(value);
+      })
+      .required('O CPF é um campo obrigatório'),
     email: Yup.string()
       .email('Esse email não é válido')
       .required('E-mail obrigatório'),
