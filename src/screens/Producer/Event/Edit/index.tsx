@@ -36,7 +36,9 @@ const AddEvent: VFC = () => {
     ),
     horaDeInicio: Yup.date().required('Hora de inicio é um campo obrigatório'),
     logradouro: Yup.string().required('Logradouro é um campo obrigatório'),
-    numero: Yup.number().required('Número é um campo obrigatório'),
+    numero: Yup.number()
+      .required('Número é um campo obrigatório')
+      .max(10, 'O Campo ser menor que 10 caracteres'),
     bairro: Yup.string().required('Bairro é um campo obrigatório'),
     cidade: Yup.string().required('Cidade é um campo obrigatório'),
     estado: Yup.string().required('Estado é um campo obrigatório'),
@@ -208,8 +210,8 @@ const AddEvent: VFC = () => {
       setValue('dataHoraFim', '');
       setValue('dataHoraInicio', '');
       toast.success('Evento editado com sucesso');
-    } catch (err) {
-      toast.error('Erro ao tentar editar, tente novamente');
+    } catch (err: any) {
+      toast.error(err.response.data.message);
     }
   };
   const handleGoBack = (): void => {
