@@ -6,19 +6,19 @@ interface ProtectedRouterProps {
   redirectPath?: string;
   children: JSX.Element;
   path?: string;
+  isPublic?: boolean;
 }
 const ProtectedRoute = ({
   redirectPath = '/',
   children,
   path,
+  isPublic,
 }: ProtectedRouterProps): JSX.Element => {
   const { token, user } = useAuth();
-
-  if (!token && path !== '/') {
+  if (!token && path !== '/' && !isPublic) {
     return <Navigate to={redirectPath} replace />;
   }
 
-  console.log('path');
   if (path === '/') {
     if (user.role === 'ADMINISTRADOR')
       return <Navigate to="/admin/home" replace />;

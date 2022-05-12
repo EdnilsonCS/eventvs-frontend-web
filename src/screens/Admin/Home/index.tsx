@@ -48,6 +48,10 @@ const Home: VFC = () => {
             router: '/admin/home',
             isOpen: true,
           },
+          {
+            name: 'Perfil',
+            router: '/user/profile',
+          },
         ]}
       />
       <Container>

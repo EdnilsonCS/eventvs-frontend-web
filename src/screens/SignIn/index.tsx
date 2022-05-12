@@ -63,7 +63,12 @@ function SignIn(): JSX.Element {
           name="password"
           control={control}
           render={({ field }) => (
-            <Input {...field} errors={errors} placeholder="Senha" />
+            <Input
+              {...field}
+              errors={errors}
+              placeholder="Senha"
+              type="password"
+            />
           )}
         />
 

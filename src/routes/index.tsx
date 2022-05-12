@@ -30,7 +30,7 @@ function Navigate(): JSX.Element {
         <Route
           path="/sign-up"
           element={
-            <ProtectedRoute path="/sign-up">
+            <ProtectedRoute path="/sign-up" isPublic>
               <SignUp />
             </ProtectedRoute>
           }
