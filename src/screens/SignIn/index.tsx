@@ -74,6 +74,7 @@ function SignIn(): JSX.Element {
 
         <Button>Entrar</Button>
 
+        <Link to="/reset-password">Esqueceu sua senha?</Link>
         <Link to="/sign-up">Não possui uma conta? Clique aqui para criar</Link>
       </Box>
     </Container>

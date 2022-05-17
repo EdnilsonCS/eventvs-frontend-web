@@ -2,6 +2,9 @@
 import { Routes, BrowserRouter, Route } from 'react-router-dom';
 
 import ChangePerfil from 'src/screens/User/ChangePerfil';
+import ResetPassword from 'src/screens/ResetPassword';
+import NewPassword from 'src/screens/ResetPassword/NewPassword';
+import CheckCode from 'src/screens/ResetPassword/CheckCode';
 import SignUp from '../screens/SignUp';
 import SignIn from '../screens/SignIn';
 import HomeParticipant from '../screens/Participant/Home';
@@ -32,6 +35,30 @@ function Navigate(): JSX.Element {
           element={
             <ProtectedRoute path="/sign-up" isPublic>
               <SignUp />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/reset-password"
+          element={
+            <ProtectedRoute path="/reset-password" isPublic>
+              <ResetPassword />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/check-code"
+          element={
+            <ProtectedRoute path="/check-code" isPublic>
+              <CheckCode />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/new-password"
+          element={
+            <ProtectedRoute path="/new-password" isPublic>
+              <NewPassword />
             </ProtectedRoute>
           }
         />
