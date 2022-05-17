@@ -43,6 +43,7 @@ interface NavbarEndProps {
 
 export const NavbarEnd = styled.div<NavbarEndProps>`
   display: none;
+  z-index: 9999;
 
   @media (min-width: 769px) {
     display: flex;
